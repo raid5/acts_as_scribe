@@ -11,13 +11,13 @@ module LinkingPaths
 
         def record_activity_of(actor, options = {})
           include_scribe_instance_methods {
-            has_many :activities, :as => :item, :dependent => :destroy
+            has_many :scribe_activities, :as => :item, :dependent => :destroy
             actions = options[:actions] || [:create, :destroy]
             actions.each do |action|
               send "after_#{action}" do |record|
                 unless options[:if].kind_of?(Proc) and not options[:if].call(record)
                   user = record.send(activity_options[:actor])
-                  Activity.report(user, action, record)
+                  ScribeActivity.report(user, action, record)
                 end
               end
             end
@@ -26,7 +26,7 @@ module LinkingPaths
         end
 
         def record_activities(actions = [])
-          raise "record_activities(#{actions.join ','}) has been deprecated. Use Activity.report(user, #{actions.first}), etc. instead."
+          raise "record_activities(#{actions.join ','}) has been deprecated. Use ScribeActivity.report(user, #{actions.first}), etc. instead."
         end
 
         def include_scribe_instance_methods(&block)
@@ -42,7 +42,7 @@ module LinkingPaths
 
       module InstanceMethods
         def record_activity(action)
-            raise "record_activity has been deprecated. Use Activity.report(actor, action, item)."
+            raise "record_activity has been deprecated. Use ScribeActivity.report(actor, action, item)."
         end
       end
 
