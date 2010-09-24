@@ -11,13 +11,13 @@ Resources
 Install
 -------
  
- * Run the following command:
+ * Add the following line to your Gemfile:
  
- `script/plugin install git://github.com/linkingpaths/acts_as_scribe.git`
+ `gem 'acts_as_scribe', :git => 'git://github.com/raid5/acts_as_scribe.git', :branch => 'rails3'`
  
  * Generate the tables via the given generator:
 
- `script/generate acts_as_scribe_migration`
+ `rails g acts_as_scribe_migration`
  
  * And finally...
  
@@ -25,7 +25,13 @@ Install
  
 Record activities in your models
 ---------------------------------------------
- 
+
+Associate the scribe activities with your user model:
+<pre>
+class User < ActiveRecord::Base    
+  has_many :scribe_activities
+end
+</pre>
 <pre>
   class Comment < ActiveRecord::Base    
     record_activity_of :user
@@ -75,15 +81,3 @@ If the action is not related to any item, just don't use it.
     Activity.report(current_user, :login)
   end
 </pre>
- 
-
-
-More
--------
-
-[http://github.com/linkingpaths/acts\_as\_scribe](http://github.com/linkingpaths/acts_as_scribe)
-
-[http://github.com/linkingpaths/acts\_as\_scribe/wikis](http://github.com/linkingpaths/acts_as_scribe/wikis)
-
-
-Copyright (c) 2008 Linking Paths, released under the MIT license
