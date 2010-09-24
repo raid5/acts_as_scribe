@@ -8,7 +8,7 @@ A simple plugin that allows to keep history records of the users activities. Com
 Resources
 =========
 
-Install
+Install (Rails 3)
 -------
  
  * Add the following line to your Gemfile:
