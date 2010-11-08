@@ -1,18 +1,18 @@
 class ScribeActivity < ActiveRecord::Base
   scope :by_user, lambda { |users|
-     { :conditions => { :user_id => users}}
+     where(:user_id => users)
   }
 
   scope :by_action, lambda { |action|
-     { :conditions => { :action => action.to_s }}
+     where(:action => action.to_s)
   }
 
   scope :by_item, lambda { |item|
-     { :conditions => { :item_type => item.class.name, :item_id => item.id }}
+     where(:item_type => item.class.name, :item_id => item.id)
   }
   
   scope :created_since, lambda { |time_ago| 
-    { :conditions => ['created_at > ?', time_ago]}
+    where('created_at > ?', time_ago)
   }  
 
   belongs_to :user
