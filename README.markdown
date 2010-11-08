@@ -1,3 +1,5 @@
+**Note: Only the rails3 branch is being actively developed.**
+
 ActsAsScribe
 ============
 A simple plugin that allows to keep history records of the users activities. Common uses could be user's wall, public timeline portlets, etc...
