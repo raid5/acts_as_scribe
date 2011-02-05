@@ -1,6 +1,6 @@
 ActsAsScribe
 ============
-A simple plugin that allows to keep history records of the users activities. Common uses could be user's wall, public timeline portlets, etc...
+A simple Rails 3 gem that allows you to keep history of user activities/actions. By default, `create` and `destroy` is tracked for models. A common use for collecting user actions is to provide a public timeline.
 
 > Scribe (From Wikipedia, the free encyclopedia):
 "A scribe was traditionally a person who could read and write. This usually indicated secretarial and administrative duties such as dictation and keeping business, judicial, and history records for kings, nobles, temples, and cities."
